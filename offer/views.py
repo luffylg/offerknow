@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 from offer.models import Offer
+
+
 # Create your views here.
 
 
