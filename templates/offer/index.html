@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Your offer collector!
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h4>Offers</h4>
+                {% if application_list %}
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>网址</th>
+                            <th>申请日期</th>
+                            <th>状态</th>
+                            <th>最后更新时间</th>
+                            <th>申请渠道</th>
+                            <th>结果</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for application in application_list %}
+                            <tr>
+                                <td>{{ application.company }}</td>
+                                <td><a href="{{ application.url }}" target="_blank">{{ application.url }}</a></td>
+                                <td>{{ application.application_date }}</td>
+                                <td>{{ application.status }}</td>
+                                <td>{{ application.last_interview_date }}</td>
+                                <td>{{ application.application_method }}</td>
+                                <td>{{ application.result }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
