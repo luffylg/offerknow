@@ -1,5 +1,8 @@
+import logging
+
 from django.shortcuts import render
 
+from offer.forms import OfferForm
 from offer.models import Offer
 
 
@@ -12,3 +15,18 @@ def index(request):
         'application_list': application_list,
     }
     return render(request=request, template_name='offer/index.html', context=context)
+
+
+def add_offer(request):
+    form = OfferForm()
+
+    if request.method == 'POST':
+        form = OfferForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            logging.error(form.errors)
+
+    return render(request=request, template_name='offer/add_offer.html', context={'form': form})
