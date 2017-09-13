@@ -65,3 +65,13 @@ def update_offer(request, offer_id):
         form = OfferForm(instance=offer)
 
     return render(request=request, template_name='offer/edit_offer.html', context={'form': form})
+
+
+def delete_offer(request, offer_id):
+    """
+    删除 offer 信息
+    :param request:
+    :param offer_id:
+    :return:
+    """
+    pass

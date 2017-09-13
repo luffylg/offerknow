@@ -35,10 +35,11 @@
                                 <td>{{ application.application_method }}</td>
                                 <td>{{ application.result }}</td>
                                 <td>
-                                    <button class="btn btn-success"
+                                    <button class="btn btn-primary btn-xs"
                                             onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
                                         修改
                                     </button>
+                                    <button class="btn btn-danger btn-xs">删除</button>
                                 </td>
                             </tr>
                         {% endfor %}
