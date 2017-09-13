@@ -21,6 +21,7 @@
                             <th>最后更新时间</th>
                             <th>申请渠道</th>
                             <th>结果</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,12 @@
                                 <td>{{ application.last_interview_date }}</td>
                                 <td>{{ application.application_method }}</td>
                                 <td>{{ application.result }}</td>
+                                <td>
+                                    <button class="btn btn-success"
+                                            onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
+                                        修改
+                                    </button>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
