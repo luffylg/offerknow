@@ -1,6 +1,6 @@
 import logging
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from offer.forms import OfferForm
 from offer.models import Offer
@@ -25,7 +25,7 @@ def add_offer(request):
 
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return redirect(to='/')
         else:
             logging.error(form.errors)
 

@@ -17,4 +17,4 @@ class OfferForm(forms.ModelForm):
 
     class Meta():
         model = Offer
-        fields = ('company','url', 'application_date', 'status', 'last_interview_date', 'application_method', 'result')
+        fields = '__all__'
