@@ -39,7 +39,11 @@
                                             onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
                                         修改
                                     </button>
-                                    <button class="btn btn-danger btn-xs">删除</button>
+                                    <form id="form-offer" method="post" style="display: inline;"
+                                          action="{% url 'offer:delete_offer' application.id %}">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger btn-xs">删除</button>
+                                    </form>
                                 </td>
                             </tr>
                         {% endfor %}

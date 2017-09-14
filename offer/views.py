@@ -1,8 +1,8 @@
 import logging
 
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 
-from offer.forms import OfferForm
+from offer.forms import OfferForm, DeleteOfferForm
 from offer.models import Offer
 
 
@@ -53,15 +53,15 @@ def update_offer(request, offer_id):
         form = OfferForm(request.POST)
 
         if form.is_valid():
-            offer = Offer.objects.get(pk=offer_id)
+            offer = get_object_or_404(Offer, pk=offer_id)
             form = OfferForm(request.POST, instance=offer)
             form.save(commit=True)
             return redirect('/')
         else:
-            offer = Offer.objects.get(pk=offer_id)
+            offer = get_object_or_404(Offer, pk=offer_id)
             form = OfferForm(instance=offer)
     else:
-        offer = Offer.objects.get(pk=offer_id)
+        offer = get_object_or_404(Offer, pk=offer_id)
         form = OfferForm(instance=offer)
 
     return render(request=request, template_name='offer/edit_offer.html', context={'form': form})
@@ -74,4 +74,14 @@ def delete_offer(request, offer_id):
     :param offer_id:
     :return:
     """
-    pass
+    offer = get_object_or_404(Offer, pk=offer_id)
+    if request.method == 'POST':
+        form = DeleteOfferForm(request.POST, instance=offer)
+
+        if form.is_valid():
+            offer.delete()
+            return redirect('/')
+        else:
+            logging.error(form.errors)
+
+    return redirect('/')

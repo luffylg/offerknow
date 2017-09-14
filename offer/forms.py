@@ -30,3 +30,13 @@ class OfferForm(forms.ModelForm):
     class Meta:
         model = Offer
         fields = '__all__'
+
+
+class DeleteOfferForm(forms.ModelForm):
+    """
+    删除表单
+    """
+
+    class Meta:
+        model = Offer
+        fields = ()
