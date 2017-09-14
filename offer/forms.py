@@ -7,45 +7,14 @@ class OfferForm(forms.ModelForm):
     """
     表单类
     """
-    RESULT_CHOICES = (
-        ('unknown', '待定'),
-        ('rejected', '回绝'),
-        ('accepted', '收到 offer'),
-    )
 
-    company = forms.CharField(
-        label='公司',
-        max_length=64,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-    )
-    url = forms.CharField(
-        label='网址',
-        help_text='以 http 开头',
-        max_length=256,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-    )
-    application_date = forms.DateField(
-        label='申请日期',
-        widget=forms.DateInput(attrs={'class': 'form-control form_datetime'}),
-    )
-    status = forms.CharField(
-        label='状态',
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-    )
-    last_interview_date = forms.DateField(
-        label='最后更新时间',
-        widget=forms.TextInput(attrs={'class': 'form-control form_datetime'}),
-    )
-    application_method = forms.CharField(
-        label='申请渠道',
-        max_length=64,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-    )
-    result = forms.CharField(
-        label='结果',
-        max_length=64,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-    )
+    def __init__(self, *args, **kwargs):
+        super(OfferForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+        self.fields['application_date'].widget.attrs['class'] += ' form_datetime'
+        self.fields['last_interview_date'].widget.attrs['class'] += ' form_datetime'
 
     def clean(self):
         """

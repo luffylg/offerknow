@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4>Offers 信息</h4>
+                <h4>offer 信息</h4>
                 <hr>
                 {% if application_list %}
                     <table class="table table-bordered table-striped">
@@ -17,9 +17,9 @@
                             <th>公司</th>
                             <th>网址</th>
                             <th>申请日期</th>
-                            <th>状态</th>
-                            <th>最后更新时间</th>
                             <th>申请渠道</th>
+                            <th>最后更新时间</th>
+                            <th>状态</th>
                             <th>结果</th>
                             <th>操作</th>
                         </tr>
@@ -30,10 +30,10 @@
                                 <td>{{ application.company }}</td>
                                 <td><a href="{{ application.url }}" target="_blank">{{ application.url }}</a></td>
                                 <td>{{ application.application_date }}</td>
-                                <td>{{ application.status }}</td>
-                                <td>{{ application.last_interview_date }}</td>
                                 <td>{{ application.application_method }}</td>
-                                <td>{{ application.result }}</td>
+                                <td>{{ application.last_interview_date }}</td>
+                                <td>{{ application.status }}</td>
+                                <td>{{ application.get_result_display }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs"
                                             onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
