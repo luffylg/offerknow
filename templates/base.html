@@ -7,15 +7,18 @@
     <meta name="viewport" content="width=device-width, initial_scale=1, shrink-to-fit=no">
     <meta name="description" content="Offer management system based on Django">
     <meta name="author" content="40huo">
-    <title>OfferKnow -
-        {% block title %}
-            Your offer collector!
-        {% endblock %}
+    <title>OfferKnow - {% block title %}Your offer collector!{% endblock %}
     </title>
 
     <!--css-->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <link href="{% static 'offer/css/offer.css' %}" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
+    <!--JS-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -43,11 +46,6 @@
         </div>
     </div>
 </nav>
-
-
-{% block body %}
-{% endblock %}
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+{% block body %}{% endblock %}
 </body>
 </html>

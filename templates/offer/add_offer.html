@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     Add Offer
 {% endblock %}
+
 
 {% block body %}
     <div class="container">
@@ -11,6 +13,7 @@
                 <form class="form-horizontal" id="form-offer" method="post" action="{% url 'offer:add_offer' %}">
                     <fieldset>
                         {% csrf_token %}
+                        {{ form.media }}
                         <legend>添加 offer 信息</legend>
                         <div class="form-group">
                             <label class="col-sm-4 control-label"
@@ -63,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-4">
-                                <button type="submit" class="btn btn-primary btn-block">提交</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="submit">提交</button>
                             </div>
                         </div>
                     </fieldset>
@@ -71,4 +74,5 @@
             </div>
         </div>
     </div>
+    {% include 'offer/footer.html' %}
 {% endblock %}
