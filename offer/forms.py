@@ -7,39 +7,58 @@ class OfferForm(forms.ModelForm):
     """
     表单类
     """
+    RESULT_CHOICES = (
+        ('unknown', '待定'),
+        ('rejected', '回绝'),
+        ('accepted', '收到 offer'),
+    )
+
     company = forms.CharField(
-        help_text='公司',
+        label='公司',
         max_length=64,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
     url = forms.CharField(
-        help_text='网址',
+        label='网址',
+        help_text='以 http 开头',
         max_length=256,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
     application_date = forms.DateField(
-        help_text='申请日期',
-        widget=forms.TextInput(attrs={'class': 'form-control form_datetime'}),
+        label='申请日期',
+        widget=forms.DateInput(attrs={'class': 'form-control form_datetime'}),
     )
     status = forms.CharField(
-        help_text='状态',
-        max_length=32,
+        label='状态',
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
     last_interview_date = forms.DateField(
-        help_text='最后更新时间',
+        label='最后更新时间',
         widget=forms.TextInput(attrs={'class': 'form-control form_datetime'}),
     )
     application_method = forms.CharField(
-        help_text='申请渠道',
+        label='申请渠道',
         max_length=64,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
     result = forms.CharField(
-        help_text='结果',
+        label='结果',
         max_length=64,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
+
+    def clean(self):
+        """
+        对不以 http 开头的 URL 做处理
+        :return:
+        """
+        cleaned_data = self.cleaned_data
+        url = cleaned_data.get('url')
+
+        if url and not url.startswith('http'):
+            url = 'http://' + url
+            cleaned_data['url'] = url
+        return cleaned_data
 
     class Meta:
         model = Offer
