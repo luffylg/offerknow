@@ -157,3 +157,5 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = ''
 #  ---------------------------------------------------------
+
+LOGIN_REDIRECT_URL='/'
