@@ -22,13 +22,11 @@
 </head>
 <body>
 <div class="ui huge fixed borderless menu">
-    <div class="ui container">
-        <a class="header huge item" href="/"><h1>OfferKnow</h1></a>
-        <a class="item" href="/">Home</a>
-        <a class="item" href="{% url 'offer:add_offer' %}">Add</a>
-        <div class="right menu item">
-            <a class="ui primary button" href="/">Sign In</a>
-        </div>
+    <a class="header huge item" href="/"><h1>OfferKnow</h1></a>
+    <a class="item" href="/">Home</a>
+    <a class="item" href="{% url 'offer:add_offer' %}">Add</a>
+    <div class="right menu item">
+        <a class="ui primary button" href="/">Sign In</a>
     </div>
 </div>
 {% block body %}{% endblock %}
