@@ -1,0 +1,45 @@
+<form class="ui form" id="form-offer" method="post" action="{% url 'offer:add_offer' %}">
+    <div class="ui middle aligned centered grid">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            <div class="row">
+                <div class="two wide right aligned column">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                </div>
+                {% if field.name == 'application_date' or field.name == 'last_interview_date' %}
+                    <div class="eight wide column calendar-div">
+                        <div class="ui left icon fluid input">
+                            <i class="calendar icon"></i>
+                            {{ field }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="eight wide column ">
+                        <div class="ui left icon fluid input">
+                            {% if field.name == 'company' %}
+                                <i class="home icon"></i>
+                            {% elif field.name == 'url' %}
+                                <i class="external icon"></i>
+                            {% elif field.name == 'status' %}
+                                <i class="unordered list icon"></i>
+                            {% elif field.name == 'application_method' %}
+                                <i class="ticket icon"></i>
+                            {% elif field.name == 'result' %}
+                                <i class="checkmark icon"></i>
+                            {% endif %}
+                            {{ field }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <div class="row">
+            {#                    offset #}
+            <div class="two wide column"></div>
+            <div class="four wide column">
+                <button type="submit" class="ui positive fluid button" id="submit">提交</button>
+            </div>
+        </div>
+    </div>
+</form>
+

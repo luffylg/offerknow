@@ -10,11 +10,13 @@ class OfferForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(OfferForm, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
 
-        self.fields['application_date'].widget.attrs['class'] += ' form_datetime'
-        self.fields['last_interview_date'].widget.attrs['class'] += ' form_datetime'
+        # 选择框
+        self.fields['result'].widget.attrs['class'] = 'ui search dropdown'
+
+        # 日期控件
+        self.fields['application_date'].widget.attrs['class'] = 'ui calendar'
+        self.fields['last_interview_date'].widget.attrs['class'] = 'ui calendar'
 
     def clean(self):
         """

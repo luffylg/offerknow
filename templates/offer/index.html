@@ -7,10 +7,9 @@
 
 {% block body %}
     <div class="ui main container">
-        <h1 class="ui header">offer 信息</h1>
-        <div class="ui divider"></div>
+        <h2 class="ui dividing header">offer 信息</h2>
         {% if application_list %}
-            <table class="ui celled table">
+            <table class="ui celled single line striped table">
                 <thead>
                 <tr>
                     <th>公司</th>
@@ -38,7 +37,7 @@
                                     onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
                                 修改
                             </button>
-                            <form id="form-offer" method="post" style="display: inline;"
+                            <form id="form-delete-offer" method="post" style="display: inline;"
                                   action="{% url 'offer:delete_offer' application.id %}">
                                 {% csrf_token %}
                                 <button class="ui red small button" id="delete-btn">删除</button>

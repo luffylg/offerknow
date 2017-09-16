@@ -14,33 +14,20 @@
     <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.css" rel="stylesheet">
     <link href="{% static 'offer/css/offer.css' %}" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/semantic-ui-calendar/0.0.8/calendar.css" rel="stylesheet">
     <!--JS-->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.js"></script>
+    <script src="https://cdn.bootcss.com/semantic-ui-calendar/0.0.8/calendar.js"></script>
 </head>
 <body>
-<div class="ui large borderless menu">
+<div class="ui huge fixed borderless menu">
     <div class="ui container">
-        <a class="header item" href="/">OfferKnow</a>
+        <a class="header huge item" href="/"><h1>OfferKnow</h1></a>
         <a class="item" href="/">Home</a>
         <a class="item" href="{% url 'offer:add_offer' %}">Add</a>
-        <div class="ui simple dropdown item">
-            Dropdown
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="#">Link Item</a><a class="item" href="#">Link Item</a>
-                <div class="divider"></div>
-                <div class="header">
-                    Header Item
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>Sub Menu
-                    <div class="menu">
-                        <a class="item" href="#">Link Item</a><a class="item" href="#">Link Item</a>
-                    </div>
-                </div>
-                <a class="item" href="#">Link Item</a>
-            </div>
+        <div class="right menu item">
+            <a class="ui primary button" href="/">Sign In</a>
         </div>
     </div>
 </div>

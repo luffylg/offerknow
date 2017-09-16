@@ -2,10 +2,18 @@ body {
     font-family: "Roboto", Verdana, Arial, sans-serif;
 }
 
+.main.container {
+    margin-top: 7em;
+}
+
 .table tbody tr td {
     vertical-align: middle;
 }
 
 .table tbody tr td:nth-last-child(1) {
     width: 10%;
+}
+
+.ui.selection.dropdown {
+    min-width: 100%;
 }
