@@ -6,53 +6,49 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h4>offer 信息</h4>
-                <hr>
-                {% if application_list %}
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>公司</th>
-                            <th>网址</th>
-                            <th>申请日期</th>
-                            <th>申请渠道</th>
-                            <th>最后更新时间</th>
-                            <th>状态</th>
-                            <th>结果</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for application in application_list %}
-                            <tr>
-                                <td>{{ application.company }}</td>
-                                <td><a href="{{ application.url }}" target="_blank">{{ application.url }}</a></td>
-                                <td>{{ application.application_date }}</td>
-                                <td>{{ application.application_method }}</td>
-                                <td>{{ application.last_interview_date }}</td>
-                                <td>{{ application.status }}</td>
-                                <td>{{ application.get_result_display }}</td>
-                                <td>
-                                    <button class="btn btn-primary btn-xs"
-                                            onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
-                                        修改
-                                    </button>
-                                    <form id="form-offer" method="post" style="display: inline;"
-                                          action="{% url 'offer:delete_offer' application.id %}">
-                                        {% csrf_token %}
-                                        <button class="btn btn-danger btn-xs" id="delete-btn">删除</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
-            </div>
-        </div>
+    <div class="ui main container">
+        <h1 class="ui header">offer 信息</h1>
+        <div class="ui divider"></div>
+        {% if application_list %}
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>公司</th>
+                    <th>网址</th>
+                    <th>申请日期</th>
+                    <th>申请渠道</th>
+                    <th>最后更新时间</th>
+                    <th>状态</th>
+                    <th>结果</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for application in application_list %}
+                    <tr>
+                        <td>{{ application.company }}</td>
+                        <td><a href="{{ application.url }}" target="_blank">{{ application.url }}</a></td>
+                        <td>{{ application.application_date }}</td>
+                        <td>{{ application.application_method }}</td>
+                        <td>{{ application.last_interview_date }}</td>
+                        <td>{{ application.status }}</td>
+                        <td>{{ application.get_result_display }}</td>
+                        <td>
+                            <button class="ui primary small button"
+                                    onclick="location.href='{% url 'offer:edit_offer' application.id %}';">
+                                修改
+                            </button>
+                            <form id="form-offer" method="post" style="display: inline;"
+                                  action="{% url 'offer:delete_offer' application.id %}">
+                                {% csrf_token %}
+                                <button class="ui red small button" id="delete-btn">删除</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
     <script src="{% static 'offer/js/offer.js' %}"></script>
 {% endblock %}
