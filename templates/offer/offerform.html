@@ -6,8 +6,15 @@
                 <div class="two wide right aligned column">
                     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                 </div>
-                {% if field.name == 'application_date' or field.name == 'last_interview_date' %}
-                    <div class="six wide column calendar-div">
+                {% if field.name == 'application_date' %}
+                    <div class="six wide column" id="rangestart">
+                        <div class="ui left icon fluid input">
+                            <i class="calendar icon"></i>
+                            {{ field }}
+                        </div>
+                    </div>
+                {% elif field.name == 'last_interview_date' %}
+                    <div class="six wide column" id="rangeend">
                         <div class="ui left icon fluid input">
                             <i class="calendar icon"></i>
                             {{ field }}

@@ -4,7 +4,6 @@
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html" charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial_scale=1, shrink-to-fit=no">
     <meta name="description" content="Offer management system based on Django">
     <meta name="author" content="40huo">
     <title>OfferKnow - {% block title %}Your offer collector!{% endblock %}
@@ -21,7 +20,7 @@
     <script src="https://cdn.bootcss.com/semantic-ui-calendar/0.0.8/calendar.js"></script>
 </head>
 <body>
-<div class="ui huge fixed borderless menu">
+<div class="ui huge fixed borderless menu" id="nav-menu">
     <a class="header huge item" href="/"><h1>OfferKnow</h1></a>
     <a class="item" href="/">Home</a>
     <a class="item" href="{% url 'offer:add_offer' %}">Add</a>
