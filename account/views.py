@@ -45,10 +45,10 @@ def register(request,
             return redirect(registered_user_redirect_to)
 
     if not settings.USERS_REGISTRATION_OPEN:
-        return redirect(reverse('users_registration_closed'))
+        return redirect(reverse('account:users_registration_closed'))
 
     if post_registration_redirect is None:
-        post_registration_redirect = reverse('users_registration_complete')
+        post_registration_redirect = reverse('account:users_registration_complete')
 
     if request.method == 'POST':
         form = registration_form(request.POST)
@@ -125,7 +125,7 @@ def activate(request,
     }
 
     if post_activation_redirect is None:
-        post_activation_redirect = reverse('users_activation_complete')
+        post_activation_redirect = reverse('account:users_activation_complete')
 
     UserModel = get_user_model()
     assert uidb64 is not None and token is not None

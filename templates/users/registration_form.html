@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block body %}
-<div class="form-wrapper">
+<div class="ui main container">
 	<form method="post" action="">
 		{% if form.errors %}
 			{% include "users/partials/errors.html" %}
@@ -11,6 +11,14 @@
 		{% for field in form %}
 			{% include "users/partials/field.html" %}
 		{% endfor %}
+        <div class="row">
+            <div class="two wide column">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+            <div class="four wide column">
+                <button type="submit" class="ui positive fluid button" id="submit" value="{% trans 'Register' %}" >注册</button>
+            </div>
+        </div>
 		<div class="button-wrapper submit">
 			<input type="submit" value="{% trans 'Register' %}" />
 		</div>
