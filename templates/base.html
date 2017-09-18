@@ -25,7 +25,7 @@
     <a class="item" href="/">Home</a>
     <a class="item" href="{% url 'offer:add_offer' %}">Add</a>
     <div class="right menu item">
-        <a class="ui primary button" href="/">Sign In</a>
+        <a class="ui primary button" href="{% url 'account:users_login' %}">Sign In</a>
     </div>
 </div>
 {% block body %}{% endblock %}

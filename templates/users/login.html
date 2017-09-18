@@ -2,7 +2,8 @@
 {% load i18n %}
 
 {% block body %}
-<div class="form-wrapper">
+<div class="ui main container">
+    <h2 class="ui dividing header">登陆</h2>
 	<form method="post" action="">
 		{% if form.errors %}
 			{% include "users/partials/errors.html" %}
@@ -11,9 +12,13 @@
 		{% for field in form %}
 			{% include "users/partials/field.html" %}
 		{% endfor %}
-		<div class="button-wrapper submit">
-			<input type="submit" value="{% trans 'Log in' %}" />
-		</div>
+        <div class="row">
+            <div class="two wide column"></div>
+            <div class="four wide column">
+                <button type="submit" class="ui positive fluid button" id="submit" value="{% trans 'Log in' %}" >登陆</button>
+            </div>
+        </div>
+
 		<input type="hidden" name="next" value="{{ next }}" />
 		<p><a href="{% url 'users_password_reset' %}">{% trans "Forgot password" %}</a></p>
 		<p><a href="{% url 'users_register' %}">{% trans "Register" %}</a></p>
