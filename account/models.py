@@ -14,6 +14,9 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(
         _('email address'), max_length=255, unique=True, db_index=True)
+    user_name = models.CharField(
+        _('user name'), max_length=255, null=False
+    )
     is_staff = models.BooleanField(
         _('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin site.'))
